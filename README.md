@@ -7,12 +7,6 @@
 	d88  d88  88P d88  d88   88P d88 
 	d88' d88'  88bd88' d88'   88bd88' 
 
-
-
-	COMMUNICATING WITH UNIX SIGNALS
-		   BY FERNAN MORALES
-
-
 	                 d8b  d8b       
 	 d8P             88P  ?88       
   d888888P          d88    88b      
@@ -20,6 +14,7 @@
 	88P   d8P' ?88  ?88    888bd8P' 
 	88b   88b  ,88b  88b  d88888b   
 	`?8b  `?88P'`88b  88bd88' `?88b,
+
 
 How to :
 - Run Make first
