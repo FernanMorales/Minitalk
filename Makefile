@@ -6,11 +6,11 @@
 #    By: fmorales <fernan.moralesayuso@gmail>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/07 20:10:24 by fmorales          #+#    #+#              #
-#    Updated: 2014/02/07 23:19:21 by fmorales         ###   ########.fr        #
+#    Updated: 2014/02/09 22:19:10 by fmorales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MKEX     = cc -g -o
+MKEX     = cc -g -O3 -o
 FLAGS 	 = -Wall -Wextra -Werror
 CLSRC 	 = main.c
 CLOBJECT = $(CLSRC:.c=.o)
@@ -19,6 +19,9 @@ SVOBJECT = $(SVSRC:.c=.o)
 COMP     = cc -c
 CLIENT   = client
 SERVER   = server
+NAME	 = minitalk
+
+$(NAME) : all
 
 all : $(CLIENT) $(SERVER)
 

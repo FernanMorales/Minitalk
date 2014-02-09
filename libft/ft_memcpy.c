@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmorales <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmorales <fernan.moralesayuso@gmail>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 20:46:40 by fmorales          #+#    #+#             */
-/*   Updated: 2014/02/09 13:24:53 by fmorales         ###   ########.fr       */
+/*   Created: 2014/02/09 22:20:20 by fmorales          #+#    #+#             */
+/*   Updated: 2014/02/09 22:20:23 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "libft.h"
 
-void	ft_putendl(char const *s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (s)
-		ft_putstr(s);
-	ft_putchar('\n');
+	unsigned int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*((char *)dest + i) = *((char *)src + i);
+		i++;
+	}
+	return (dest);
 }

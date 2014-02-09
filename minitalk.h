@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_server.h                                  :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmorales <fernan.moralesayuso@gmail>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 22:39:35 by fmorales          #+#    #+#             */
-/*   Updated: 2014/02/07 23:32:46 by fmorales         ###   ########.fr       */
+/*   Created: 2014/02/09 22:13:51 by fmorales          #+#    #+#             */
+/*   Updated: 2014/02/09 22:15:04 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_SERVER_H
 # define MINITALK_SERVER_H
 # include <string.h>
+# include <signal.h>
 # include "../libft/libft.h"
+# define BUFF_SIZE 1000000
 
 /*
  * server functions
  */
 
-void	signal_rec(int code);
-void	set_signals(void);
+void	get_bit_1(int signal, siginfo_t *, void *context);
 int		launch_server(void);
 int		main(int ac, char **av);
+void	print_client(char **message, int *counter);
 
 /*
  *  client functions

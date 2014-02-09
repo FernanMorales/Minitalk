@@ -6,12 +6,13 @@
 /*   By: fmorales <fernan.moralesayuso@gmail>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/07 21:05:32 by fmorales          #+#    #+#             */
-/*   Updated: 2014/02/07 23:31:16 by fmorales         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:01:58 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
 #include "minitalk.h"
@@ -29,16 +30,17 @@ int			send_msg(int pid, char m)
 	c = 0;
 	while (c < 8)
 	{
-		usleep(500);
 		if ((m >> c) & 1)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 				return (signal_error());
+			pause();
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
 				return (signal_error());
+			pause();
 		}
 		++c;
 	}

@@ -6,7 +6,7 @@
 #    By: fmorales <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/13 14:09:07 by fmorales          #+#    #+#              #
-#    Updated: 2014/02/07 23:37:36 by fmorales         ###   ########.fr        #
+#    Updated: 2014/02/09 13:08:40 by fmorales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC = ft_atoi.c \
 	  ft_putnbr.c	\
 	  ft_itoa.c		\
 	  ft_strnew.c	\
+	  ft_realloc.c	\
+	  ft_memcpy.c	\
 	  ft_strsub.c 
 
 OBJ = $(SRC:.c=.o)

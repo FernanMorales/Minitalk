@@ -6,43 +6,57 @@
 /*   By: fmorales <fernan.moralesayuso@gmail>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/07 22:41:36 by fmorales          #+#    #+#             */
-/*   Updated: 2014/02/07 23:40:20 by fmorales         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:11:10 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
 #include "minitalk.h"
 
-void		signal_rec(int	code)
+void					print_client(char **message, int *counter)
 {
-	static char		c;
-	static int		i;
+	int					i;
 
-	if (code == SIGUSR1)
+	i = *counter;
+	(*message)[i] = '\0';
+	ft_putendl(*message);
+	free(*message);
+	*counter = 0;
+}
+
+void					get_bit_1(int signal, siginfo_t *siginfo, void *context)
+{
+	static char			c;
+	static int			i;
+	static char			*message;
+	static int			counter;
+
+	(void)context;
+	message = counter ? message : (char *)malloc(sizeof(char) * BUFF_SIZE);
+	if (signal == SIGUSR1)
 		c += (1 << i);
 	i++;
 	if (i > 7)
 	{
 		if (!c)
-			ft_putchar('\n');
+			print_client(&message, &counter);
 		else
-			ft_putchar(c);
+		{
+			message[counter] = c;
+			++counter;
+		}
 		c = 0;
 		i = 0;
 	}
+	usleep(30);
+	kill(siginfo->si_pid, SIGUSR1);
 }
 
-void		set_signals(void)
-{
-	sleep(1);
-	signal(SIGUSR1, signal_rec);
-	signal(SIGUSR2, signal_rec);
-}
-
-int			launch_server(void)
+int						launch_server(void)
 {
 	ft_putstr("PID = ");
 	if (getpid() == 0)
@@ -52,13 +66,19 @@ int			launch_server(void)
 	return (1);
 }
 
-int			main(int ac, char **av)
+int						main(int ac, char **av)
 {
+	struct sigaction    sighandler1;
+
 	if (ac != 1)
 		return (0);
 	if (launch_server() == 0)
 		return (0);
-	set_signals();
+	sighandler1.sa_sigaction = get_bit_1;
+	sighandler1.sa_flags = SA_SIGINFO;
+	sighandler1.sa_flags |= SA_NODEFER;
+	sigaction(SIGUSR1, &sighandler1, NULL);
+	sigaction(SIGUSR2, &sighandler1, NULL);
 	(void)av;
 	while (1)
 		pause();

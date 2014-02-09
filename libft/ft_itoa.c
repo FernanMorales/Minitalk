@@ -6,7 +6,7 @@
 /*   By: fmorales <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 13:52:24 by fmorales          #+#    #+#             */
-/*   Updated: 2013/12/13 13:52:27 by fmorales         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:12:04 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int		ft_index(int n)
 {
-	int		i;
+	int			i;
 
 	i = 1;
 	if (n < 0)
@@ -31,10 +31,10 @@ static int		ft_index(int n)
 	return (i);
 }
 
-char		*ft_limit(int n, int i)
+char			*ft_limit(int n, int i)
 {
-	int		nb;
-	char	*tab;
+	int			nb;
+	char		*tab;
 
 	tab = ft_strnew(i + 1);
 	nb = i - 1;
@@ -52,10 +52,10 @@ char		*ft_limit(int n, int i)
 	return (tab);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*tab;
-	int		i;
+	char		*tab;
+	int			i;
 
 	i = ft_index(n);
 	tab = ft_strnew(i + 1);

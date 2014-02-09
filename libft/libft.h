@@ -6,7 +6,7 @@
 /*   By: fmorales <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 14:08:22 by fmorales          #+#    #+#             */
-/*   Updated: 2014/01/26 21:32:20 by fmorales         ###   ########.fr       */
+/*   Updated: 2014/02/09 13:12:15 by fmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+void				*ft_realloc(void *ptr, size_t old, size_t n);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
